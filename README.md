@@ -4,6 +4,8 @@
         <img src="https://img.shields.io/github/release/rios0rios0/caa.svg?style=for-the-badge&logo=github" alt="Latest Release"/></a>
     <a href="https://github.com/rios0rios0/caa/blob/main/LICENSE">
         <img src="https://img.shields.io/github/license/rios0rios0/caa.svg?style=for-the-badge&logo=github" alt="License"/></a>
+    <a href="https://github.com/rios0rios0/caa/actions/workflows/default.yaml">
+        <img src="https://img.shields.io/github/actions/workflow/status/rios0rios0/caa/default.yaml?branch=main&style=for-the-badge&logo=github" alt="Build Status"/></a>
 </p>
 
 A collection of classic sorting algorithms implemented in Java 8 with a built-in instruction-counting benchmarking framework that measures best-case, worst-case, and average-case performance across varying input sizes. Each algorithm counts the exact number of primitive operations (comparisons, swaps, assignments) executed during sorting, providing concrete empirical data for algorithm analysis.
@@ -54,7 +56,7 @@ A collection of classic sorting algorithms implemented in Java 8 with a built-in
 |-----------|---------|
 | **Language** | Java 8 (lambdas, streams, `OptionalInt`) |
 | **Build** | Apache Maven 3 with `maven-assembly-plugin` |
-| **CI** | Travis CI (Oracle JDK 8) |
+| **CI** | GitHub Actions |
 | **Output** | ANSI terminal colors via escape sequences |
 
 ## Project Structure
@@ -62,7 +64,6 @@ A collection of classic sorting algorithms implemented in Java 8 with a built-in
 ```
 caa/
 ├── pom.xml                                                # Maven build configuration (Java 8, assembly plugin)
-├── .travis.yml                                            # Travis CI configuration (Oracle JDK 8)
 ├── src/
 │   └── main/
 │       ├── java/
