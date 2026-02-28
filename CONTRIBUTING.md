@@ -8,20 +8,27 @@ development practices, refer to the **[Development Guide](https://github.com/rio
 ## Prerequisites
 
 - [JDK](https://adoptium.net/) 8+
-- [Maven](https://maven.apache.org/) 3+
+- [Apache Maven](https://maven.apache.org/) 3+
 
 ## Development Workflow
 
 1. Fork and clone the repository
 2. Create a branch: `git checkout -b feat/my-change`
-3. Build the project:
+3. Install dependencies and build the project:
    ```bash
-   mvn clean install
+   mvn clean package
    ```
-4. Make your changes
-5. Run tests:
+4. Run the application via Maven:
+   ```bash
+   mvn exec:java -Dexec.mainClass="com.rios0rios0.Main"
+   ```
+5. Or run via the assembled JAR:
+   ```bash
+   java -jar target/CAA-1.0.0-jar-with-dependencies.jar
+   ```
+6. Run tests:
    ```bash
    mvn test
    ```
-6. Commit following the [commit conventions](https://github.com/rios0rios0/guide/wiki/Life-Cycle/Git-Flow)
-7. Open a pull request against `main`
+7. Commit following the [commit conventions](https://github.com/rios0rios0/guide/wiki/Life-Cycle/Git-Flow)
+8. Open a pull request against `main`
