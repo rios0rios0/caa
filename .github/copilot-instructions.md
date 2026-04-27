@@ -52,7 +52,7 @@ caa/
 
 ```bash
 mvn clean package
-# Produces: target/CAA-1.0.0-jar-with-dependencies.jar
+# Produces: target/CAA-0.1.0-jar-with-dependencies.jar
 # Typical duration: ~10–15 seconds
 ```
 
@@ -63,7 +63,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="com.rios0rios0.Main"
 
 # Run via assembled JAR
-java -jar target/CAA-1.0.0-jar-with-dependencies.jar
+java -jar target/CAA-0.1.0-jar-with-dependencies.jar
 ```
 
 ### Test
@@ -147,7 +147,7 @@ Required permissions: `security-events: write`, `contents: write`.
 - **Instruction counting** – every new sorting algorithm must call `inc()` (or `inc(n)`) inside each primitive operation (comparisons, swaps, assignments) to maintain accurate benchmarking.
 - **`Sort` interface** – all sorting implementations must implement `Sort` and extend `DefaultSort`.
 - **Naming** – class names use PascalCase; method and variable names use camelCase.
-- **Output** – use `Console.success()`, `Console.info()`, and `Console.error()` for colored output; do not use raw `System.out.println` in algorithm or demo code.
+- **Output** – use `Console.showMsgSuccess()`, `Console.showMsgInfo()`, and `Console.showMsgError()` for colored output; do not use raw `System.out.println` in algorithm or demo code.
 - **Package structure** – algorithm classes belong in `com.rios0rios0.ordination`; utility classes belong in `com.rios0rios0.utils`.
 - **No external dependencies** – the project has no runtime dependencies beyond the JDK; keep it dependency-free.
 
