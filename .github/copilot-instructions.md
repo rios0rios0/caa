@@ -52,7 +52,7 @@ caa/
 
 ```bash
 mvn clean package
-# Produces: target/CAA-0.1.0-jar-with-dependencies.jar
+# Produces: target/CAA-0.1.1-jar-with-dependencies.jar
 # Typical duration: ~10–15 seconds
 ```
 
@@ -119,7 +119,7 @@ Sort (interface)
 The workflow in `.github/workflows/default.yaml` delegates to the shared reusable pipeline:
 
 ```
-rios0rios0/pipelines/.github/workflows/java-maven.yaml@main
+rios0rios0/pipelines/.github/workflows/maven-library.yaml@main
 ```
 
 It triggers on:
