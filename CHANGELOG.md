@@ -16,6 +16,8 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-19
+
 ### Changed
 
 - refreshed `.github/copilot-instructions.md` to update CI workflow reference (`java-maven.yaml` → `maven-library.yaml`) and JAR filename version (0.1.0 → 0.1.1)
