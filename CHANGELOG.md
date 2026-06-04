@@ -20,7 +20,7 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ### Changed
 
-- refreshed `.github/copilot-instructions.md` to update JAR filename version (0.1.2 → 0.1.3) in the build and run commands
+- refreshed `.github/copilot-instructions.md` to update JAR filename version (0.1.3 → 0.1.4) in the build and run commands
 
 ## [0.1.3] - 2026-05-25
 
