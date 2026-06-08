@@ -103,7 +103,7 @@ Sort (interface)
 
 - **`Array`** – generates random integer arrays with values in `[0, size*10)` using `java.util.Random` and `OptionalInt` streams.
 - **`Colorize`** – builds ANSI escape sequences supporting bold, italic, underline, and colors (green, blue, red).
-- **`Console`** – provides `success()`, `error()`, and `info()` wrappers that print colorized messages to stdout.
+- **`Console`** – provides `showMsgSuccess()`, `showMsgError()`, and `showMsgInfo()` wrappers (plus `showSyn()`, `showAck()`, and plain `showMsg()`) that print colorized messages to stdout.
 
 ## Sorting Algorithms
 
