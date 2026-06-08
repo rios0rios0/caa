@@ -16,6 +16,10 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+### Changed
+
+- refreshed `.github/copilot-instructions.md` to correct the `Console` utility method names (`success()`/`error()`/`info()` → `showMsgSuccess()`/`showMsgError()`/`showMsgInfo()`)
+
 ## [0.1.4] - 2026-06-03
 
 ### Changed
