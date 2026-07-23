@@ -16,6 +16,12 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+### Removed
+
+- removed the unreachable `Colorize.setColor(String, Params)` overload flagged as dead code by the ProGuard `quality:proguard` check
+
+## [0.1.8] - 2026-07-22
+
 ### Changed
 
 - refreshed `.github/copilot-instructions.md` to update JAR filename version (0.1.6 → 0.1.7) in the build and run commands
