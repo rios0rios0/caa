@@ -16,6 +16,10 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+### Removed
+
+- removed the unreachable `Colorize.setColor(String, Params)` overload flagged as dead code by the ProGuard `quality:proguard` check
+
 ## [0.1.8] - 2026-07-22
 
 ### Changed
