@@ -16,6 +16,10 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+### Changed
+
+- refreshed `.github/copilot-instructions.md` to update JAR filename version (0.1.7 → 0.1.9) in the build and run commands
+
 ## [0.1.9] - 2026-07-23
 
 ### Removed
