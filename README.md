@@ -124,7 +124,7 @@ mvn exec:java -Dexec.mainClass="com.rios0rios0.Main"
 ### Run via JAR
 
 ```bash
-java -jar target/CAA-1.0.0-jar-with-dependencies.jar
+java -jar target/CAA-X.Y.Z-jar-with-dependencies.jar
 ```
 
 ### Sample Output
