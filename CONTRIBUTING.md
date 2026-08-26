@@ -24,7 +24,7 @@ development practices, refer to the **[Development Guide](https://github.com/rio
    ```
 5. Or run via the assembled JAR:
    ```bash
-   java -jar target/CAA-1.0.0-jar-with-dependencies.jar
+   java -jar target/CAA-0.2.0-jar-with-dependencies.jar
    ```
 6. Run tests:
    ```bash
