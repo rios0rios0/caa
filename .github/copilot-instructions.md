@@ -10,7 +10,9 @@
 caa/
 ├── .github/
 │   └── workflows/
-│       └── default.yaml          # CI pipeline (delegates to shared maven-library workflow)
+│       ├── default.yaml          # CI pipeline (delegates to shared maven-library workflow)
+│       ├── claude-review.yaml    # automated Claude code review (reusable workflow caller)
+│       └── claude-mention.yaml   # @claude mention responder (reusable workflow caller)
 ├── src/
 │   └── main/
 │       ├── java/
@@ -52,7 +54,7 @@ caa/
 
 ```bash
 mvn clean package
-# Produces: target/CAA-0.1.12-jar-with-dependencies.jar
+# Produces: target/CAA-0.3.0-jar-with-dependencies.jar
 # Typical duration: ~10–15 seconds
 ```
 
@@ -63,7 +65,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="com.rios0rios0.Main"
 
 # Run via assembled JAR
-java -jar target/CAA-0.1.12-jar-with-dependencies.jar
+java -jar target/CAA-0.3.0-jar-with-dependencies.jar
 ```
 
 ### Test
@@ -138,7 +140,7 @@ Required permissions: `security-events: write`, `contents: write`.
 4. Build and verify: `mvn clean package`
 5. Run the application to manually verify output: `mvn exec:java -Dexec.mainClass="com.rios0rios0.Main"`
 6. Run tests: `mvn test`
-7. Commit following the [commit conventions](https://github.com/rios0rios0/guide/wiki/Life-Cycle/Git-Flow) (Conventional Commits).
+7. Commit following the [commit conventions](https://github.com/rios0rios0/guide/wiki/Git-Flow) (Conventional Commits).
 8. Open a pull request against `main`.
 
 ## Coding Conventions
