@@ -22,6 +22,12 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-09-01
+
+### Changed
+
+- refreshed `.github/copilot-instructions.md` to bump the packaged JAR filename to `0.3.0`, correct the flat `rios0rios0/guide` wiki link for Git Flow, and list the new `claude-review.yaml` and `claude-mention.yaml` workflows
+
 ## [0.3.0] - 2026-08-28
 
 ### Added
