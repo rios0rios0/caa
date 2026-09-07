@@ -54,7 +54,7 @@ caa/
 
 ```bash
 mvn clean package
-# Produces: target/CAA-0.3.0-jar-with-dependencies.jar
+# Produces: target/CAA-0.3.1-jar-with-dependencies.jar
 # Typical duration: ~10–15 seconds
 ```
 
@@ -65,7 +65,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="com.rios0rios0.Main"
 
 # Run via assembled JAR
-java -jar target/CAA-0.3.0-jar-with-dependencies.jar
+java -jar target/CAA-0.3.1-jar-with-dependencies.jar
 ```
 
 ### Test
