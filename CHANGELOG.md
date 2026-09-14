@@ -22,6 +22,12 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-09-14
+
+### Changed
+
+- refreshed `.github/copilot-instructions.md` to make the packaged JAR filename version-agnostic instead of the stale `0.3.1`
+
 ## [0.3.2] - 2026-09-08
 
 ### Changed
