@@ -22,6 +22,12 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-09-23
+
+### Changed
+
+- populated `CLAUDE.md` with the project overview, build commands, architecture, and conventions instead of the bare changelog block
+
 ## [0.3.3] - 2026-09-14
 
 ### Changed
