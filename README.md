@@ -13,7 +13,7 @@ A collection of classic sorting algorithms implemented in Java 8 with a built-in
 ## Features
 
 - **Four Sorting Algorithms** -- HeapSort, InsertionSort, QuickSort, and RadixSort, each implementing a common `Sort` interface
-- **Instruction Counting** -- every algorithm tracks the exact number of primitive operations via an `inc()` counter, allowing direct comparison of computational cost
+- **Instruction Counting** -- every algorithm tracks the exact number of primitive operations via an `inc(n)` counter, allowing direct comparison of computational cost
 - **Best/Worst Case Demonstration** -- the `demo()` method runs each algorithm with pre-defined best-case and worst-case inputs, printing the sorted output and instruction count
 - **Scaling Analysis** -- `demo()` also runs each algorithm with random arrays of doubling sizes (625, 1250, 2500, 5000, 10000, 20000 elements) to observe growth behavior
 - **Statistical Benchmarking** -- the `analysis()` method runs 50 iterations across array sizes of 5, 10, 50, 100, 1000, and 10000 elements, computing the median instruction count per size
@@ -40,7 +40,7 @@ A collection of classic sorting algorithms implemented in Java 8 with a built-in
 ### QuickSort
 
 - **Time Complexity**: O(n log n) average, O(n^2) worst case
-- **Implementation**: uses Lomuto-style partitioning with the first element as pivot. The `part()` method maintains two indices scanning inward from both ends, swapping elements that are on the wrong side of the pivot. Recursion follows `T(n) = T(n/2) + T(n/2) + n`.
+- **Implementation**: uses Hoare-style partitioning with the first element as pivot. The `part()` method maintains two indices scanning inward from both ends, swapping elements that are on the wrong side of the pivot. Recursion follows `T(n) = T(n/2) + T(n/2) + n`.
 - **Best Case**: the pivot consistently divides the array in half
 - **Worst Case**: the pivot is always the smallest or largest element (e.g., already sorted input)
 

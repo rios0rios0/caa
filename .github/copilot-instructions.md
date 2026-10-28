@@ -8,7 +8,12 @@
 
 ```
 caa/
+├── .changes/
+│   └── unreleased/               # chlog fragments (CHANGELOG.md is generated from these)
 ├── .github/
+│   ├── copilot-instructions.md
+│   ├── skills/
+│   │   └── code-review/SKILL.md  # repo-tailored code-review skill
 │   └── workflows/
 │       ├── default.yaml          # CI pipeline (delegates to shared maven-library workflow)
 │       ├── claude-review.yaml    # automated Claude code review (reusable workflow caller)
@@ -33,7 +38,10 @@ caa/
 │           └── META-INF/
 │               └── MANIFEST.MF                      # JAR manifest
 ├── pom.xml                                          # Maven build configuration
+├── .gitleaksignore
+├── AGENTS.md                                        # shared agent instructions
 ├── CHANGELOG.md
+├── CLAUDE.md                                        # imports AGENTS.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md
@@ -99,7 +107,7 @@ Sort (interface)
   - `demo(bestCase, worstCase)` – runs best/worst case inputs, prints results, then runs scaling tests from 625 to 20 000 elements (doubling each step).
   - `analysis(times)` – runs `times` (default 50) iterations across 6 array sizes (5, 10, 50, 100, 1 000, 10 000), computing the median instruction count per size.
   - `performance` map (`LinkedHashMap<Integer, Float>`) accumulates instruction counts per array size across iterations.
-- Each algorithm overrides `sort(int[])` and calls `inc()` inside every primitive operation to count instructions.
+- Each algorithm overrides `sort(int[])`, resets with `setInstructions(0)`, and calls `inc(n)` inside every primitive operation to count instructions. Sorts are in place: they mutate and return the input array.
 
 ### Utilities
 
@@ -113,7 +121,7 @@ Sort (interface)
 |----------------|-------------|--------------|--------------|---------------------------------------------|
 | HeapSort       | O(n log n)  | O(n log n)   | O(n log n)   | Max-heap; recursive `heapify`              |
 | InsertionSort  | O(n)        | O(n²)        | O(n²)        | Shift-based; inner loop counts operations  |
-| QuickSort      | O(n log n)  | O(n²)        | O(n log n)   | First-element pivot; Lomuto-style partition |
+| QuickSort      | O(n log n)  | O(n²)        | O(n log n)   | First-element pivot; Hoare-style partition  |
 | RadixSort      | O(d·n)      | O(d·n)       | O(d·n)       | LSD digit-by-digit counting sort           |
 
 ## CI/CD Pipeline
@@ -146,7 +154,7 @@ Required permissions: `security-events: write`, `contents: write`.
 ## Coding Conventions
 
 - **Java 8 only** – use lambdas, streams, and `Optional`/`OptionalInt` where appropriate; avoid features from later Java versions.
-- **Instruction counting** – every new sorting algorithm must call `inc()` (or `inc(n)`) inside each primitive operation (comparisons, swaps, assignments) to maintain accurate benchmarking.
+- **Instruction counting** – every new sorting algorithm must reset with `setInstructions(0)` at the start of `sort` and call `inc(n)` inside each primitive operation (comparisons, swaps, assignments) to maintain accurate benchmarking.
 - **`Sort` interface** – all sorting implementations must implement `Sort` and extend `DefaultSort`.
 - **Naming** – class names use PascalCase; method and variable names use camelCase.
 - **Output** – use `Console.showMsgSuccess()`, `Console.showMsgInfo()`, and `Console.showMsgError()` for colored output; do not use raw `System.out.println` in algorithm or demo code.
@@ -158,13 +166,13 @@ Required permissions: `security-events: write`, `contents: write`.
 ### Adding a new sorting algorithm
 
 1. Create a new class in `src/main/java/com/rios0rios0/ordination/` extending `DefaultSort` and implementing `Sort`.
-2. Override `sort(int[])` and call `inc()` inside every primitive operation.
+2. Override `sort(int[])`, reset with `setInstructions(0)`, and call `inc(n)` inside every primitive operation.
 3. Define meaningful best-case and worst-case input arrays.
 4. Register the algorithm in `Main.java` alongside the existing four.
 
 ### Updating the version
 
-Update the `<version>` tag in `pom.xml` and the JAR filename reference in `README.md` and `CONTRIBUTING.md`.
+Update the `<version>` tag in `pom.xml`; the docs use the version-agnostic `CAA-X.Y.Z` JAR name and need no change.
 
 ## Troubleshooting
 
