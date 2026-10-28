@@ -20,7 +20,7 @@ The canonical engineering standards live in the
 repo-tailored index into that guide plus the rules that only apply here. Precedence, highest
 first:
 
-1. This repository's `.github/copilot-instructions.md`, `CLAUDE.md`, and `CONTRIBUTING.md` —
+1. This repository's `AGENTS.md`, `.github/copilot-instructions.md`, and `CONTRIBUTING.md` —
    they describe *this* codebase and its load-bearing invariants.
 2. The **rios0rios0/guide** wiki — the shared standard.
 3. General language idiom.
@@ -75,10 +75,10 @@ them before the generic ones.
 
 - **`Sort` is the contract**: `int[] sort(int[])`. A new algorithm implements it and extends `DefaultSort`; it does not add a parallel entry point or change the signature.
 - **The instruction counter is the measurement.** `inc(n)` must be called on every counted operation and `setInstructions(0)` must reset between runs. An algorithm that forgets to count, or that counts inconsistently with its siblings, makes the whole comparison meaningless — **Critical** for this repository's purpose.
-- **Algorithms must not mutate the caller's array unless that is the documented contract.** `demo()` and `analysis()` reuse inputs across runs; an in-place sort that leaks into the next iteration corrupts the benchmark.
+- **Sorts are in place:** every algorithm mutates and returns the caller's array, and `demo()`/`analysis()` rely on handing each `sort` call a fresh array. Flag a change that reuses one input array across counted runs, or a new algorithm that departs from the in-place contract without saying so.
 - **Correctness needs the boundary cases**: empty array, single element, already sorted, reverse sorted, all-equal elements, and negative values (radix sort in particular). A new algorithm without them is incomplete.
 - **Do not change the analysis parameters casually** — `analysis(times)` defaults to 50 iterations across sizes 5, 10, 50, 100, 1 000, 10 000, and `demo` scales from 625 to 20 000 by doubling. Published numbers stop being comparable if these move.
-- Console output goes through the `Console`/`Colorize` helpers, not raw `System.out.println` scattered through the algorithms.
+- Console output goes through `Console` (and `Array.printArray`), not raw `System.out` scattered through the algorithms; `Colorize` is package-private to `utils`.
 - Recursive implementations (heapify, quicksort) need a stated depth bound or an argument for why the input size cannot overflow the stack.
 
 ### Commands a reviewer should be able to quote
@@ -170,7 +170,7 @@ hand.
 - Fragment bodies start with a lowercase verb in simple past tense, capitalise proper nouns
   (GitHub, Go, Docker), and wrap code identifiers and versions in backticks.
 - `README.md` is updated whenever usage, setup, configuration, or architecture changes;
-  `.github/copilot-instructions.md` and `CLAUDE.md` whenever the workflow, commands, or
+  `.github/copilot-instructions.md` and `AGENTS.md` whenever the workflow, commands, or
   structure changes. Documentation and code ship in one commit.
 
 ## Git Flow and pull-request hygiene
@@ -234,7 +234,7 @@ A review that raises noise gets ignored. Do not report these:
 ### Change-control checklist
 - [ ] Changelog entry present for every behavioural change
 - [ ] `README.md` updated if usage, setup, or architecture changed
-- [ ] `.github/copilot-instructions.md` and `CLAUDE.md` updated if the workflow, commands, or structure changed
+- [ ] `.github/copilot-instructions.md` and `AGENTS.md` updated if the workflow, commands, or structure changed
 - [ ] Commit messages follow `type(SCOPE): message` in simple past tense
 - [ ] Breaking changes flagged in the commit footer, the changelog, and the PR description
 

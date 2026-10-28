@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI coding agents (Claude Code, Codex, Cursor, GitHub Copilot) when working with code in this repository.
 
 ## What this is
 
@@ -24,19 +24,12 @@ is unavailable, build and run the assembled JAR instead.
 
 ## Architecture
 
-`Sort` (`int[] sort(int[])`) is the one contract. `DefaultSort` (abstract) implements it and
-owns the benchmark machinery every algorithm inherits:
-
-- an `instructions` counter mutated only through `inc(int)`; reset with `setInstructions(0)`
-- `demo(bestCase, worstCase)` — runs both cases, then scales random inputs from 625 to
-  20 000 by doubling
-- `analysis(times)` (default 50) — medians the instruction count over sizes 5, 10, 50, 100,
-  1 000, 10 000, accumulating into the `performance` `LinkedHashMap<Integer, Float>`
-
-Each concrete algorithm overrides `sort` and calls `inc(...)` on every counted primitive
-(comparison, swap, assignment). `Main` wires up all four. Utilities live in
-`com.rios0rios0.utils`: `Array` (random arrays in `[0, size*10)`, printing), `Colorize`
-(ANSI escapes), `Console` (colored `showMsg*` helpers).
+`Sort` (`int[] sort(int[])`) is the one contract. `DefaultSort` is abstract and
+package-private, so algorithms must live in `com.rios0rios0.ordination`; it owns `demo()`
+and `analysis()`. The instruction counter is the measurement: each `sort` resets it with
+`setInstructions(0)` and calls `inc(int)` on every counted primitive (comparison, swap,
+assignment). Sorts are in place: they mutate and return the input array, and `demo`/
+`analysis` pass a fresh array to each call. `Main` wires up all four.
 
 ## Conventions
 
@@ -46,8 +39,8 @@ Each concrete algorithm overrides `sort` and calls `inc(...)` on every counted p
   `com.rios0rios0.ordination`, counts every primitive with `inc(...)`, and is registered in
   `Main`. Moving the `analysis` sizes or the 625→20 000 scaling breaks comparability with
   the published numbers.
-- Print through `Console`/`Colorize`, not raw `System.out.println`, in algorithm and demo
-  code.
+- Print through `Console` (and `Array.printArray`), not raw `System.out`, in algorithm and
+  demo code; `Colorize` is package-private to `utils`.
 - CI (`.github/workflows/default.yaml`) delegates to
   `rios0rios0/pipelines/.github/workflows/maven-library.yaml@main`.
 
