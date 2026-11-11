@@ -22,6 +22,12 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+## [0.3.5] - 2026-11-11
+
+### Changed
+
+- moved the agent instructions from `CLAUDE.md` to `AGENTS.md`, keeping a `CLAUDE.md` that imports it, and corrected the QuickSort partition style, the `inc(n)` counter signature, the in-place sort contract, and stale `CLAUDE.md` references across `AGENTS.md`, `.github/copilot-instructions.md`, `.github/skills/code-review/SKILL.md`, `README.md`, and `CONTRIBUTING.md`
+
 ## [0.3.4] - 2026-09-23
 
 ### Changed
